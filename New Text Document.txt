@@ -1,0 +1,178 @@
+CREATE DATABASE IF NOT EXISTS financial_dues;
+
+USE financial_dues;
+
+CREATE TABLE totals (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(255) NOT NULL,
+    total_item DECIMAL(10, 2) DEFAULT 0,
+    b_total_item DECIMAL(10, 2) DEFAULT 0,
+    c_total_item DECIMAL(10, 2) DEFAULT 0,
+    d_total_item DECIMAL(10, 2) DEFAULT 0,
+    e_total_item DECIMAL(10, 2) DEFAULT 0,
+    f_total_item DECIMAL(10, 2) DEFAULT 0,
+    g_total_item DECIMAL(10, 2) DEFAULT 0,
+    h_total_item DECIMAL(10, 2) DEFAULT 0,
+    i_total_item DECIMAL(10, 2) DEFAULT 0,
+    result_item DECIMAL(10, 2) DEFAULT 0,
+    description VARCHAR(255) NOT NULL
+);
+
+-- Insert sample data
+INSERT INTO totals (item_name, total_item, b_total_item, c_total_item, d_total_item, e_total_item, f_total_item, g_total_item, h_total_item, i_total_item, result_item, description)
+VALUES 
+('Item 1', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات { بند إستثمار }'),
+('Item 2', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { بند إستثمار }'),
+('Item 3', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات { بند صيانة }'),
+('Item 4', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { بند صيانة }'),
+('Item 5', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات { بند دأنين }'),
+('Item 6', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { بند دأنين }'),
+('Item 7', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات حياة كريمة'),
+('Item 8', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { مستخلصات حياة كريمة }'),
+('Item 9', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'جاري مستحقات 2023 { استثمار }'),
+('Item 10', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'أعوام سابقة { صيانة }'),
+('Item 11', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'تعويضات تم اعتمادها من مجلس الوزراء { استثمار }'),
+('Item 12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'تعويضات تم اعتمادها من مجلس الوزراء { صيانة }'),
+('Item 13', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار مواد حجرية');
+
+/*
+<script>
+  $(document).ready(function() {
+  function calculateTotal(selector, resultId) {
+    let overallSum = 0;
+    for (let i = 1; i <= 12; i++) {
+      const value = parseFloat($(`${selector}${i}`).val()) || 0;
+      overallSum += value;
+    }
+    $(resultId).text(overallSum.toFixed(2));
+  }
+
+  function calculateCombinedTotal(id1, id2, id3, resultId) {
+    for (let i = 1; i <= 12; i++) {
+      const value1 = parseFloat($(`#${id1}${i}`).val()) || 0;
+      const value2 = parseFloat($(`#${id2}${i}`).val()) || 0;
+      const value3 = parseFloat($(`#${id3}${i}`).val()) || 0;
+      const combinedSum = value1 + value2 + value3;
+      $(`#${resultId}${i}`).val(combinedSum ? combinedSum.toFixed(2) : '');
+    }
+  }
+
+  function calculateDoubleCombinedTotal(id1, id2, resultId) {
+    for (let i = 1; i <= 12; i++) {
+      const value1 = parseFloat($(`#${id1}${i}`).val()) || 0;
+      const value2 = parseFloat($(`#${id2}${i}`).val()) || 0;
+      const combinedSum = value1 + value2;
+      $(`#${resultId}${i}`).val(combinedSum ? combinedSum.toFixed(2) : '');
+    }
+  }
+
+  function updateResults() {
+    calculateTotal('#total_item', '#result_item_1');
+    calculateTotal('#b_total_item', '#result_item_2');
+    calculateTotal('#c_total_item', '#result_item_3');
+    calculateTotal('#d_total_item', '#result_item_4');
+    calculateTotal('#e_total_item', '#result_item_5');
+    calculateTotal('#f_total_item', '#result_item_6');
+    calculateTotal('#g_total_item', '#result_item_7');
+    calculateTotal('#h_total_item', '#result_item_8');
+    calculateTotal('#i_total_item', '#result_item_9');
+
+    calculateCombinedTotal('total_item', 'c_total_item', 'e_total_item', 'g_total_item');
+    calculateCombinedTotal('b_total_item', 'd_total_item', 'f_total_item', 'h_total_item');
+
+    calculateDoubleCombinedTotal('g_total_item', 'h_total_item', 'i_total_item');
+  }
+
+  $(document).on('input', '.total_item', function() {
+    updateResults();
+  });
+
+  // Initial calculation
+  updateResults();
+});
+</script>
+*/
+
+
+
+CREATE DATABASE IF NOT EXISTS financial_dues;
+
+USE financial_dues;
+
+CREATE TABLE totals (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(255) NOT NULL,
+    total_item DECIMAL(30, 2) DEFAULT 0,
+    b_total_item DECIMAL(30, 2) DEFAULT 0,
+    c_total_item DECIMAL(30, 2) DEFAULT 0,
+    d_total_item DECIMAL(30, 2) DEFAULT 0,
+    e_total_item DECIMAL(30, 2) DEFAULT 0,
+    f_total_item DECIMAL(30, 2) DEFAULT 0,
+    g_total_item DECIMAL(30, 2) DEFAULT 0,
+    h_total_item DECIMAL(30, 2) DEFAULT 0,
+    i_total_item DECIMAL(30, 2) DEFAULT 0,
+    result_item DECIMAL(30, 2) DEFAULT 0,
+    description VARCHAR(255) NOT NULL
+);
+
+-- Insert sample data
+INSERT INTO totals (item_name, total_item, b_total_item, c_total_item, d_total_item, e_total_item, f_total_item, g_total_item, h_total_item, i_total_item, result_item, description)
+VALUES 
+('Item 1', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات { بند إستثمار }'),
+('Item 2', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { بند إستثمار }'),
+('Item 3', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات { بند صيانة }'),
+('Item 4', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { بند صيانة }'),
+('Item 5', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات { بند دأنين }'),
+('Item 6', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { بند دأنين }'),
+('Item 7', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات حياة كريمة'),
+('Item 8', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { مستخلصات حياة كريمة }'),
+('Item 9', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'جاري مستحقات 2023 { استثمار }'),
+('Item 10', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'أعوام سابقة { صيانة }'),
+('Item 11', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'تعويضات تم اعتمادها من مجلس الوزراء { استثمار }'),
+('Item 12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'تعويضات تم اعتمادها من مجلس الوزراء { صيانة }'),
+('Item 13', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار مواد حجرية');
+
+CREATE DATABASE IF NOT EXISTS financial_dues;
+
+USE financial_dues;
+
+CREATE TABLE totals (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(255) NOT NULL,
+    total_item DECIMAL(10, 2) DEFAULT 0,
+    b_total_item DECIMAL(10, 2) DEFAULT 0,
+    c_total_item DECIMAL(10, 2) DEFAULT 0,
+    d_total_item DECIMAL(10, 2) DEFAULT 0,
+    e_total_item DECIMAL(10, 2) DEFAULT 0,
+    f_total_item DECIMAL(10, 2) DEFAULT 0,
+    g_total_item DECIMAL(10, 2) DEFAULT 0,
+    h_total_item DECIMAL(10, 2) DEFAULT 0,
+    i_total_item DECIMAL(10, 2) DEFAULT 0,
+    result_item DECIMAL(10, 2) DEFAULT 0,
+    description VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE report_dates (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    report_date DATE NOT NULL
+);
+
+-- Insert sample data into totals
+INSERT INTO totals (item_name, total_item, b_total_item, c_total_item, d_total_item, e_total_item, f_total_item, g_total_item, h_total_item, i_total_item, result_item, description)
+VALUES 
+('Item 1', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات { بند إستثمار }'),
+('Item 2', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { بند إستثمار }'),
+('Item 3', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات { بند صيانة }'),
+('Item 4', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { بند صيانة }'),
+('Item 5', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات { بند دأنين }'),
+('Item 6', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { بند دأنين }'),
+('Item 7', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'مستخلصات حياة كريمة'),
+('Item 8', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار { مستخلصات حياة كريمة }'),
+('Item 9', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'جاري مستحقات 2023 { استثمار }'),
+('Item 10', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'أعوام سابقة { صيانة }'),
+('Item 11', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'تعويضات تم اعتمادها من مجلس الوزراء { استثمار }'),
+('Item 12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'تعويضات تم اعتمادها من مجلس الوزراء { صيانة }'),
+('Item 13', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'فروق أسعار مواد حجرية');
+
+-- Insert sample data into report_dates
+INSERT INTO report_dates (report_date) VALUES ('2024-09-18');
